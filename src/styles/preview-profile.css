@@ -1,0 +1,19 @@
+.about-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.text {
+    font-size: 25px;
+    max-width: 575px;
+}
+
+.avatar {
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 100%;
+}

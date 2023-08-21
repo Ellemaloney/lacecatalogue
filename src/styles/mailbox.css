@@ -1,0 +1,25 @@
+.mailbox {
+    display: flex;
+    flex-direction: column;
+    background-color: #e5e5e5;
+    min-height: 600px;
+    border-radius: 8px;
+}
+
+.message-item {
+    text-align: center;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 3fr;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.message-preview {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+
+}

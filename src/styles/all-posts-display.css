@@ -1,0 +1,28 @@
+.section-posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.section-posts img {
+    width: 275px;
+    height: 275px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 200ms ease-in-out;
+}
+
+.section-posts img:hover {
+    transform: scale(1.1);
+}
+
+.delete-button {
+    transition: color 200ms;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    color: red;
+}

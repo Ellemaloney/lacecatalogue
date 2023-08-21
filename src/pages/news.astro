@@ -1,0 +1,59 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import {SITE_TITLE} from "../consts";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <BaseHead title={SITE_TITLE} />
+</head>
+<body>
+<Header title={SITE_TITLE} />
+<main>
+    <h2 class="title-big m-b-15">News</h2>
+
+    <article class="card">
+        <p>
+            Hello, dear lace making community!
+        </p>
+
+        <p class="no-margin">
+            We hope you're enjoying your journey on our digital catalogue, where creativity knows no bounds and the art of lace making flourishes. We're delighted to share that we have some incredible updates and features in the pipeline that are set to elevate your experience even further.
+            Under the "News" tab, you'll find a dedicated space where we'll be sharing all the latest updates, enhancements, and new features as they roll out.
+            One of the cornerstones of our platform is the beautiful lacework created by our talented users. We're excited to see our catalogue fill up with your exquisite designs, each a testament to your passion and skill. Whether you're a seasoned lace maker or just beginning your journey, this platform is a canvas for your creativity.
+        </p>
+
+        <p>
+            With each lace piece you share, you have the opportunity to provide a detailed description. This is your chance to delve into the inspiration behind your creation, share the techniques you used, and connect with fellow lace enthusiasts on a deeper level. We believe that every lacework tells a unique story, and this feature allows you to narrate yours.
+            Your support, feedback, and enthusiasm drive us to continuously improve and evolve the platform, ensuring that it remains a hub of inspiration, learning, and connection for all lace makers.
+            Remember, every thread you weave here adds to the rich tapestry of our shared artistry.
+            Thank you for making our platform your creative home. We can't wait to reveal what's in store and to see your lace masterpieces continue to fill our catalogue.
+        </p>
+
+        <p>
+
+            Warm regards,
+        </p>
+
+        <p>
+            The Lace Catalogue Team
+        </p>
+
+
+    </article>
+</main>
+
+</body>
+<style>
+    .card {
+        background-color: var(--bg-white);
+        border-radius: 15px;
+        padding: 15px;
+        font-family: 'Gilroy-Bold', 'Source Sans Pro', sans-serif;
+        font-size: 23px;
+    }
+</style>
+</html>
+

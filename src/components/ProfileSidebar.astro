@@ -1,0 +1,111 @@
+---
+import LogoutBtn from '../components/LogoutBtn'
+const { currentPath } = Astro.props;
+---
+
+<nav class="sidebar">
+    <div class="personal-info">
+        <img class="avatar" src="/assets/image-5.png" alt="avatar">
+        <p class="font-white title">Hello Maureen</p>
+    </div>
+
+    <ul class="font-white">
+        <li>
+            <a href="/personal-area/profile">
+                <img class="icon" src="/assets/vector-iAj.png" alt="small avatar">
+                <span>Profile</span>
+                {currentPath === 'personal-area/profile' ? <img alt="active indicator" class="icon active-indicator" src="/assets/vector.png"> : null}
+            </a>
+        </li>
+        <li>
+            <a href="/personal-area/inbox">
+                <img alt="Inbox icon" class="icon invert" src="/assets/a376cb2839117-2.png">
+                <span>Inbox</span>
+                {currentPath === 'personal-area/inbox' ? <img alt="active indicator" class="icon active-indicator" src="/assets/vector.png"> : null}
+            </a>
+        </li>
+        <li>
+            <a href="/personal-area/all-posts">
+                <img alt="Pin icon" class="icon" src="/assets/icons8-tack-32-1.png">
+                <span>All posts</span>
+                {currentPath === 'personal-area/all-posts' ? <img alt="active indicator" class="icon active-indicator" src="/assets/vector.png"> : null}
+            </a>
+        </li>
+        <li>
+            <a href="/personal-area/uploads">
+                <img alt="Folder icon" class="icon" src="/assets/vector-NKH.png">
+                <span>Upload</span>
+                {currentPath === 'personal-area/uploads' || currentPath === 'upload-success' ? <img alt="active indicator" class="icon active-indicator" src="/assets/vector.png"> : null}
+            </a>
+        </li>
+    </ul>
+
+    <ul class="font-white bottom-menu">
+        <li>
+            <a>
+                <img alt="logout icon" class="icon invert" src="/assets/kisspng-computer-icons-encapsulated-postscript-5adbd2021ffcf0-2.png">
+                <LogoutBtn client:load />
+            </a>
+        </li>
+        <li>
+            <a href="/delete-profile">
+                <span>Delete profile</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    .sidebar {
+        position: relative;
+        background-color: var(--bg-strongest);
+        min-width: 193px;
+        height: calc(100vh - 118px);
+    }
+
+    .sidebar ul li a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 18px;
+        padding: 4px 22px;
+        border-radius: 50px;
+        background: rgba(196, 196, 196, 0.50);
+        /*background-color: var(--bg-strong);*/
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25);
+        margin: 0 15px 58px 15px;
+    }
+
+    .sidebar ul li a *:not(:last-child) {
+        margin-right: 9px;
+    }
+
+    .personal-info {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .avatar {
+        width: 22px;
+        height: 22px;
+        border-radius: 121px;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.35);
+    }
+
+    .bottom-menu {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .icon {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+    }
+
+    .icon:not(.active-indicator).invert {
+        margin-right: 9px;
+    }
+</style>

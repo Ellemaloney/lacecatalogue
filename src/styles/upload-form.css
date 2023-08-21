@@ -1,0 +1,133 @@
+/* Step 2 */
+
+.step-2-wrapper {
+    background-color: #e5e5e5;
+    padding: 57px;
+    border-radius: 10px;
+    font-family: 'Gilroy-Bold', 'Source Sans Pro', sans-serif;
+}
+
+select {
+    padding: 4px 30px;
+    border-radius: 10px;
+    color: #8D8C90;
+    border: 1px solid #cfd1d5;
+    width: 100%;
+    font-size: 24px;
+}
+
+select:active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+option:hover {
+}
+
+option:active {
+    background-color: #b8bbc2;
+}
+
+option:checked {
+    background-color: #c4cbdf;
+}
+
+
+.title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.image-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.image-wrapper img {
+    object-fit: cover;
+    height: 233px;
+    width: 222px;
+    border-radius: 10px;
+}
+
+
+/*upload form*/
+.form-group {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 8px;
+    background-color:rgba(235, 235, 235);
+    margin-bottom: 12px;
+    padding: 0;
+    align-items: baseline;
+}
+
+.form-group:last-of-type {
+    margin-bottom: 50px;
+}
+
+.form-group input {
+    margin: 0;
+    width: 100%;
+    border: none;
+    background-color: rgba(235, 235, 235);
+    padding: 20px 20px;
+    font-size: inherit;
+    color: inherit;
+}
+
+textarea {
+    background-color: rgba(235, 235, 235);
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    font-size: inherit;
+    color: inherit;
+    padding: 20px;
+    font-family: 'Gilroy-Bold', 'Source Sans Pro', sans-serif;
+}
+
+.no-background {
+    background-color: transparent;
+}
+
+.hidden {
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+    max-width: 248px;
+}
+
+label {
+    min-width: fit-content;
+    margin-right: 10px;
+}
+
+
+.file-upload-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+}
+
+.upload-icon {
+    width: 29px;
+    height: 29px;
+    margin-right: 8px;
+}
+
+.file-upload-wrapper button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    display: none;
+}
+

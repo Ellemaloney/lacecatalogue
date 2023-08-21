@@ -1,0 +1,24 @@
+.publish-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.publish-control {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.publish-control input {
+    width: 21px;
+    height: 21px;
+    accent-color: var(--font-color-accent);
+}
+
+.default-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

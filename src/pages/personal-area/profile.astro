@@ -1,0 +1,103 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+import ProfileEditSection from '../../components/ProfileEditSection.jsx';
+import ProfileForm from '../../components/ProfileForm.jsx';
+import ProfileLayout from "../../layouts/ProfileLayout.astro";
+
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+const isLoggedIn = Astro.cookies.has('logged');
+if(!isLoggedIn) {
+	return Astro.redirect('/login');
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} />
+	</head>
+	<body>
+		<Header title={SITE_TITLE} />
+
+		<ProfileLayout title={SITE_TITLE} currentPath={currentPath}>
+			<main>
+				<ProfileForm client:load />
+
+				<section class="section-right">
+					<div class="edit-component m-b-150">
+						<div class="edit-picture m-b-15">
+							<img class="avatar-big" src="/assets/image-5.png" alt="big avatar">
+							<span class="edit-button pointer">+</span>
+						</div>
+						<p class="edit-text">Edit picture or avatar</p>
+					</div>
+
+					<ProfileEditSection client:load />
+
+				</section>
+
+			</main>
+		</ProfileLayout>
+
+	</body>
+
+	<style>
+		main {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+		}
+
+		.section-left {
+			min-width: 652px;
+		}
+
+		.section-right {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 58px 0;
+		}
+
+		.edit-component {
+			max-width: 240px;
+		}
+
+		.edit-picture {
+			position: relative;
+		}
+
+		.edit-picture .avatar-big {
+			width: 240px;
+			height: 240px;
+			object-fit: cover;
+			border-radius: 100%;
+		}
+
+		.edit-picture .edit-button {
+			position: absolute;
+			bottom: 8px;
+			right: 15px;
+			background-color: #FF0000;
+			color: white;
+			font-size: 40px;
+			border-radius: 100%;
+			width: 40px;
+			height: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.edit-text {
+			font-size: 20px;
+			text-align: center;
+			font-weight: 700;
+		}
+	</style>
+</html>

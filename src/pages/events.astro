@@ -1,0 +1,64 @@
+---
+
+import {SITE_TITLE} from "../consts";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import {allEvents} from "../../store/events.store";
+
+---
+
+<html lang="en">
+<head>
+    <BaseHead title={SITE_TITLE} />
+</head>
+<body>
+<Header title={SITE_TITLE} />
+<main>
+    <h2 class="title m-b-50">Events</h2>
+
+        {
+            allEvents.map(event => (
+                    <article class="event-card">
+                        <div class="card-info">
+                            <h3 class="title m-b-15">{event.title}</h3>
+                            <span>{event.content}</span>
+                        </div>
+                        { event?.image && <img src={`/assets/${event.image}`} />}
+                    </article>
+            ))}
+</main>
+</body>
+<style>
+    .event-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+        background-color: white;
+        padding: 30px 40px;
+        border-radius: 10px;
+        gap: 30px;
+    }
+
+    .event-card title {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .event-card span {
+        font-size: 30px;
+    }
+
+    .event-card img {
+        width: 252px;
+        height: 229px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+</style>
+</html>
+
+
+

@@ -1,0 +1,113 @@
+---
+import {authors } from "../../../store/authors.store";
+import BaseHead from "../../components/BaseHead.astro";
+import {SITE_TITLE} from "../../consts";
+import Header from "../../components/Header.astro";
+import SendMessageForm from "../../components/SendMessageForm";
+
+const { authorSlug } = Astro.params;
+const author = authors.find((author ) => author.slug === authorSlug);
+
+if(!author) return Astro.redirect("/404");
+
+const { name, bio, image } = author;
+
+---
+
+<html lang="en">
+<head>
+    <BaseHead/>
+</head>
+<body>
+<Header title={SITE_TITLE} />
+
+<main>
+    <section class="author-info">
+        <div>
+            <h2 class="title m-b-50">{name}</h2>
+            {
+                bio ?
+                        <p>{bio}</p>
+                    :
+                    <p>
+                        My name is Maureen and I’m a passionate designer with 20 years experience in Lace making.
+                        I love solving problems and I can almost never say no to a challenge.
+                        My motto is to be at least 1% better every day , which is why I always look for ways to improve myself.
+                    </p>
+            }
+
+            <svg class="m-r-15" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="Vector">
+                    <path d="M34 17C34 26.3888 26.3888 34 17 34C7.61116 34 0 26.3888 0 17C0 7.61116 7.61116 0 17 0C26.3888 0 34 7.61116 34 17Z" fill="url(#paint0_linear_513_1339)"/>
+                    <path d="M14.28 22.1V33.66C14.28 33.8478 14.4322 34 14.62 34H19.38C19.5678 34 19.72 33.8478 19.72 33.66V22.1C19.72 21.9122 19.8722 21.76 20.06 21.76H23.46C23.6478 21.76 23.8 21.6078 23.8 21.42V17.34C23.8 17.1522 23.6478 17 23.46 17H20.06C19.8722 17 19.72 16.848 19.72 16.6602V13.6C19.72 12.24 21.42 11.56 22.1 11.56H24.14C24.3278 11.56 24.48 11.4078 24.48 11.22V7.14C24.48 6.95222 24.3278 6.8 24.14 6.8H19.72C16.456 6.8 14.28 10.2 14.28 12.24V16.66C14.28 16.8478 14.1278 17 13.94 17H10.54C10.3522 17 10.2 17.1522 10.2 17.34V21.42C10.2 21.6078 10.3522 21.76 10.54 21.76H13.94C14.1278 21.76 14.28 21.9122 14.28 22.1Z" fill="white"/>
+                </g>
+                <defs>
+                    <linearGradient id="paint0_linear_513_1339" x1="17" y1="0" x2="17" y2="34" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#18ACFE"/>
+                        <stop offset="1" stop-color="#0165E1"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <img alt="ig icon" src="/assets/instagram.png" />
+        </div>
+
+       <img class="profile-image" alt="profile image" src={image} />
+
+    </section>
+    <footer>
+        <div class="contact-text-section">
+            <h2>Contact me</h2>
+            <p>Messages received will be delivered to the users inbox.</p>
+        </div>
+       <SendMessageForm client:load />
+
+    </footer>
+</main>
+</body>
+<style>
+    main {
+        padding: 0;
+    }
+    .author-info {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap-reverse;
+        align-items: center;
+        margin-bottom: 50px;
+        padding: 20px 15%;
+
+    }
+
+    h2, p {
+        text-align: left;
+    }
+
+    .author-info p {
+        max-width: 575px;
+    }
+
+    .author-info h2 {
+        margin: 20px 0;
+    }
+
+    .profile-image {
+        width: 259px;
+        height: 271px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+
+    footer {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: white;
+        padding: 20px 15%;
+    }
+
+    .contact-text-section {
+        margin-right: 50px;
+    }
+</style>
+</html>

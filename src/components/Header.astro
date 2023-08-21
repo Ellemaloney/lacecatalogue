@@ -1,0 +1,86 @@
+---
+import LogoutBtn from '../components/LogoutBtn';
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+const isLogged = Astro.cookies.has('logged');
+
+const isLoggedIn = Astro.cookies.has('logged');
+---
+
+<header class="title">
+    <div class="menu-left">
+        <img class="lace-logo-1-U6s" alt="logo" src="/assets/lace-logo-1-7Ry.png"/>
+        {
+            isLogged
+                ? <LogoutBtn client:load />
+                : <a href="/login">Log in</a>
+        }
+    </div>
+
+    <nav>
+        <ul class="menu-right">
+            <li class={ currentPath === "catalogue" || currentPath === ""  ? "" : "" }><a href="/">Catalogue</a></li>
+            <li class={ currentPath === "directory" ? "" : ""}><a href="/directory">Directory</a></li>
+            <li class={ currentPath === "news" ? "" : ""}><a href="/news">News</a></li>
+            <!--<li class={ currentPath === "news" || currentPath === "" ? "active" : ""}><a href="/news">News</a></li>-->
+            <li class={ currentPath === "events" ? "" : ""}><a href="/events">Events</a></li>
+            <li class={ currentPath === "contact" ? "" : ""}><a href="/contact">Contact</a></li>
+            <li class={ !isLoggedIn ? "active" : ""}><a href="/personal-area/profile">Profile</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<style>
+    header {
+        position: sticky;
+        top: 0;
+        background-color: white;
+        min-height: 118px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .menu-left {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .menu-right {
+       display: flex;
+        dflex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .menu-right li {
+        margin-right: 24px;
+    }
+
+    .menu-right li.active {
+        color: var(--font-color-highlight);
+    }
+
+    .lace-logo-1-U6s {
+        margin-right: 0.6rem;
+        width: 78px;
+        height: 78px;
+        object-fit: cover;
+        vertical-align: top;
+        border-radius: 40.3rem;
+        flex-shrink: 0;
+    }
+
+
+
+    @media (max-width: 720px) {
+        .menu-right li {
+            margin-right: 8px;
+        }
+
+    }
+</style>

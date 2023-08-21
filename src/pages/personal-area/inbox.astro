@@ -1,0 +1,52 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import {SITE_TITLE} from "../../consts";
+import Header from "../../components/Header.astro";
+import ProfileLayout from "../../layouts/ProfileLayout.astro";
+import MailBox from "../../components/MailBox";
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+---
+<html>
+<head>
+   <BaseHead title={SITE_TITLE} />
+</head>
+<body>
+   <Header title={SITE_TITLE}/>
+   <ProfileLayout title={SITE_TITLE} currentPath={currentPath}>
+      <main>
+         <h2 class="title m-b-15 m-l-55">Inbox</h2>
+
+         <section class="section-right">
+           <div>
+              <div class="column-headers">
+                 <span>Received</span>
+                 <span>Sender</span>
+                 <span>Message</span>
+              </div>
+
+              <MailBox client:load />
+           </div>
+         </section>
+      </main>
+   </ProfileLayout>
+
+
+</body>
+<style>
+   .column-headers {
+      text-align: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr 3fr;
+      font-size: 24px;
+      font-weight: bold;
+      color: #a09fa2;
+   }
+
+   .section-right {
+      padding: 0 0 58px 0;
+   }
+</style>
+
+</html>

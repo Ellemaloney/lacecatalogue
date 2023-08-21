@@ -1,0 +1,51 @@
+---
+
+import BaseHead from "../components/BaseHead.astro";
+import Header from '../components/Header.astro';
+import {SITE_TITLE} from "../consts";
+import ProfileLayout from "../layouts/ProfileLayout.astro";
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+---
+
+<html lang="en">
+<head>
+    <BaseHead title={SITE_TITLE} />
+</head>
+<body>
+<Header title={SITE_TITLE}/>
+
+<ProfileLayout title={SITE_TITLE} currentPath={currentPath}>
+    <main>
+        <img alt="success image" class="success-image" src="/assets/login-image.png">
+
+        <h2 class="title">Success!</h2>
+
+        <p class="text">Your post has now been published</p>
+
+        <a href="/posts/1" class="btn btn-primary">View post</a>
+    </main>
+</ProfileLayout>
+</body>
+<style>
+    main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .success-image {
+        width: auto;
+        height: 294px;
+        margin-bottom: 50px;
+    }
+
+    .text {
+        font-weight: bold;
+    }
+
+</style>
+</html>

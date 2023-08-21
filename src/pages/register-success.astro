@@ -1,0 +1,48 @@
+---
+import {SITE_TITLE} from "../consts";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import ReturnToLoginBtn from "../components/ReturnToLoginBtn";
+---
+
+<html lang="en">
+<head>
+        <BaseHead title={SITE_TITLE} />
+</head>
+<body>
+        <Header title={SITE_TITLE} />
+        <main>
+                <section>
+                        <img alt="lace image" class="lace-image" src="/assets/login-image.png">
+                        <p class="m-b-20">Thank you for registering!</p>
+                        <p class="m-b-50">Your submission is being reviewed and a notification will be sent to your registered email.</p>
+
+                        <ReturnToLoginBtn client:load />
+                </section>
+        </main>
+</body>
+<style>
+        main {
+                font-size: 24px;
+                padding: 40px 20%;
+                font-weight: bold;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+        }
+
+        section {
+                text-align: center;
+                max-width: 414px;
+        }
+
+       .lace-image {
+               width: auto;
+               height: 294px;
+               margin-bottom: 50px;
+       }
+</style>
+</html>

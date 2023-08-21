@@ -1,0 +1,17 @@
+---
+import {SITE_TITLE} from "../consts";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import AuthorsDisplay from "../components/AuthorsDisplay";
+---
+<html lang="en">
+<head>
+    <BaseHead title={SITE_TITLE} />
+</head>
+<Header title={SITE_TITLE} />
+
+<main>
+   <AuthorsDisplay client:load />
+</main>
+
+</html>

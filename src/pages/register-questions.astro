@@ -1,0 +1,75 @@
+---
+import {SITE_TITLE} from "../consts";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";---
+
+<html lang="en">
+<head>
+    <BaseHead title={SITE_TITLE} />
+</head>
+<body>
+    <Header title={SITE_TITLE} />
+    <main>
+        <p>
+            To enhance the security of your profile, we've implemented security questions. These questions will serve as an extra layer of protection and will be used for verification purposes.
+            Please take a moment to answer the following security questions:
+        </p>
+
+        <p>
+            Please take a moment to answer the following security questions:
+        </p>
+
+        <form>
+            <div class="form-group">
+                <label for="question-one">Are you a lace maker?</label>
+                <textarea id="question-one" name="question-one" rows="2"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="question-two">How do you intend to use the catalogue?</label>
+                <textarea id="question-two" name="question-two" rows="2"></textarea>
+            </div>
+
+            <a href="/register-success" class="btn btn-primary">Submit</a>
+        </form>
+    </main>
+
+</body>
+<style>
+main {
+    font-size: 24px;
+    padding: 40px 20%;
+}
+
+p, label {
+    font-weight: bold;
+}
+
+main * {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    background-color: rgba(235, 235, 235);
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    font-size: inherit;
+    color: inherit;
+    padding: 20px;
+}
+
+a.btn {
+    display: block;
+    text-align: center;
+    width: 275px;
+    align-self: center;
+    margin: 0 auto;
+}
+</style>
+</html>

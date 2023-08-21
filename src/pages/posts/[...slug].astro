@@ -1,0 +1,154 @@
+---
+import {allPosts} from "../../../store/post.store";
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import {SITE_TITLE} from "../../consts";
+import PostCommentSection from "../../components/PostCommentSection";
+
+const {slug} = Astro.params;
+const postIndex = allPosts.findIndex(postEntry => postEntry.slug === slug);
+console.log(allPosts)
+const post = allPosts[postIndex];
+if(!post) return Astro.redirect('/404');
+const {title, content, author, image, authorSlug} = post;
+---
+
+<html lang="en">
+    <head>
+        <BaseHead/>
+    </head>
+    <body>
+        <Header title={SITE_TITLE} />
+
+        <main>
+            <section class="section-left">
+                <img class="post-image m-b-30" alt="post image" src={image} />
+                <p class="title author-name">{author}</p>
+                <a class="title author-link" href={`/authors/${authorSlug}`}>Go to profile</a>
+            </section>
+
+            <section class="section-right">
+                <h2 class="post-title m-b-15">{title}</h2>
+
+                <p class="text">{content}</p>
+            </section>
+        </main>
+
+        <PostCommentSection postSlug={slug} client:only="react" />
+
+
+        <footer>
+            {
+                postIndex != 0 &&
+                            <a class="back-btn" href={`/posts/${+slug-1}`}>
+                                <img class="arrow-icon" src="/assets/back-2.png">
+                                Previous post
+                            </a>
+
+            }
+
+
+            {
+                postIndex < allPosts.length -1 &&
+                            <a class="next-btn" href={`/posts/${+slug+1}`}>
+                                Next post
+                                <img class="arrow-icon arrow-next" src="/assets/back-2.png">
+                            </a>
+            }
+
+        </footer>
+    </body>
+<style>
+    main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 44px;
+        margin: 40px 0;
+        padding: 18px 8%;
+    }
+
+    .section-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .section-left p, .section-left a {
+        width: 100%;
+    }
+
+    .author-name {
+        font-size: 30px;
+    }
+
+    .author-link {
+        font-size: 25px;
+        text-decoration: underline;
+    }
+
+    .post-image {
+        width: 484px;
+        height: 508px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    .section-right {
+        max-width: 750px;
+        align-items: initial;
+    }
+
+    .post-title {
+        font-size: 40px;
+    }
+
+
+
+
+       footer {
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        height: 78px;
+        background-color: white;
+        width: 100%;
+
+    }
+
+    .back-btn {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100%;
+        gap: 8px;
+        margin: 0 15px;
+        max-width: fit-content;
+    }
+
+    .next-btn {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+        //gap: 8px;
+        margin: 0 15px 0 auto;
+        max-width: fit-content;
+    }
+
+    .arrow-icon {
+       width: 49px;
+        height: 49px;
+    }
+
+    .arrow-next {
+        transform: rotate(180deg);
+    }
+
+
+</style>
+</html>

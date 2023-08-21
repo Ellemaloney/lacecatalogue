@@ -1,0 +1,57 @@
+/*Search box section*/
+.search-box {
+    background-color: var(--bg-medium);
+    border-radius: 10px;
+    max-width: min(349px, 80vw);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 15px;
+}
+
+.search-box p {
+    margin: 0;
+}
+
+.search-box input {
+    font-family: 'Gilroy-Bold', 'Source Sans Pro', sans-serif;
+    font-size: 24px;
+    color: inherit;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+/*Display section*/
+.authors-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 60px;
+    margin: 0 50px;
+}
+
+.author-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.author-card img {
+    width: 131px;
+    height: 131px;
+    object-fit: cover;
+    border-radius: 70px;
+    margin-right: 8px;
+}
+
+@media (max-width: 720px) {
+    .search-box {
+        max-width: 100%;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+}

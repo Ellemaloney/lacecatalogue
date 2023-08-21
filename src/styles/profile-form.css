@@ -1,0 +1,40 @@
+.section-left {
+    min-width: 652px;
+    font-size: 24px;
+    color: var(--bg-strongest);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    border-radius: 8px;
+    background-color:rgba(235, 235, 235);
+    padding: 0 20px;
+    margin-bottom: 12px;
+}
+
+.form-group:last-of-type {
+    margin-bottom: 50px;
+}
+
+.form-group input {
+    margin: 0 20px;
+    width: 100%;
+    border: none;
+    background-color: rgba(235, 235, 235);
+    padding: 20px 20px;
+    font-size: inherit;
+    color: inherit;
+}
+
+textarea {
+    background-color: rgba(235, 235, 235);
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    font-size: inherit;
+    color: inherit;
+    padding: 20px;
+}

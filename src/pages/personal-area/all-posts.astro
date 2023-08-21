@@ -1,0 +1,28 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import {SITE_TITLE} from "../../consts";
+import Header from "../../components/Header.astro";
+import ProfileLayout from "../../layouts/ProfileLayout.astro";
+import {allPosts} from "../../../store/post.store";
+import AllPostsDisplay from "../../components/AllPostsDisplay";
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+const posts = allPosts;
+---
+
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE}/>
+    </head>
+    <body>
+        <Header title={SITE_TITLE}/>
+        <ProfileLayout title={SITE_TITLE} currentPath={currentPath}>
+            <main>
+                <h2 class="title m-b-20 m-l-55">All posts</h2>
+                <AllPostsDisplay client:only />
+            </main>
+        </ProfileLayout>
+    </body>
+
+</html>

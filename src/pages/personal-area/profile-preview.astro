@@ -1,0 +1,62 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import {SITE_TITLE} from "../../consts";
+import Header from "../../components/Header.astro";
+import PreviewProfile from "../../components/PreviewProfile";
+import SendMessageForm from "../../components/SendMessageForm";
+import Modal from "../../components/Modal";
+
+---
+
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} />
+    </head>
+
+    <body>
+    <Header title={SITE_TITLE} />
+
+    <main>
+
+        <PreviewProfile client:load />
+
+        <div class="contact-wrapper">
+            <section class="contact-text-section text">
+                <h2 class="title-big">Contact me</h2>
+                <p class="contact-text">Messages received will be delivered to the users inbox.</p>
+            </section>
+
+            <SendMessageForm client:load />
+        </div>
+
+    </main>
+
+    </body>
+
+    <style>
+        main {
+            padding: 30px 15%;
+        }
+
+        .contact-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: white;
+            padding: 20px 15%;
+        }
+        .text {
+            font-size: 25px;
+            max-width: 575px;
+        }
+
+        .contact-text-section {
+            margin-right: 50px;
+        }
+
+    </style>
+</html>

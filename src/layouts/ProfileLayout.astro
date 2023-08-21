@@ -1,0 +1,25 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import ProfileSidebar from "../components/ProfileSidebar.astro";
+
+const { title, currentPath } = Astro.props;
+---
+<html>
+    <head>
+        <BaseHead title={title} />
+    </head>
+    <body>
+    <div class="wrapper">
+        <ProfileSidebar currentPath={currentPath} />
+        <slot/>
+    </div>
+
+    </body>
+    <style>
+        .wrapper {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+
+</html>
